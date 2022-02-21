@@ -38,7 +38,7 @@
         ],
         "responses": {
           "200": {
-            "description": "200 response",
+            "description": "It will return a list of all the currently available hiring campaigns.",
             "headers": {
               "Access-Control-Allow-Origin": {
                 "type": "string"
