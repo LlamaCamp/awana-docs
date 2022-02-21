@@ -1,0 +1,514 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "API for a Awana App",
+    "version": "v2",
+    "title": "Llamahub API"
+  },
+  "host": "api.awana.io",
+  "basePath": "/dev",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/campaigns": {
+      "get": {
+        "operationId": "getCampaigns",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "skip",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "security": [
+          {
+            "jwt-rsa-custom-authorizer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "400 response"
+          }
+        }
+      },
+      "post": {
+        "description": "Insert or Update an specific campaign, you need to send the id in Body to update, otherwise, create a new campaign",
+        "operationId": "addCampaign",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Campaign",
+            "description": "Insert or Update an specific campaign, you need to send the id in Body to update, otherwise, create a new campaign",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Campaign"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response. Campaign was created succesfully.",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Campaign"
+            }
+          },
+          "201": {
+            "description": "201 response"
+          },
+          "400": {
+            "description": "400 response"
+          },
+          "409": {
+            "description": "409 response"
+          },
+          "500": {
+            "description": "Internal Server Error."
+          }
+        }
+      },
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/campaigns/{id}": {
+      "get": {
+        "operationId": "getCampaign",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Campaign"
+            }
+          },
+          "400": {
+            "description": "400 response"
+          },
+          "404": {
+            "description": "404 response"
+          }
+        }
+      }
+    },
+    "/candidates": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "security": [
+          {
+            "jwt-rsa-custom-authorizer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "400 response"
+          },
+          "404": {
+            "description": "404 response"
+          },
+          "500": {
+            "description": "500 response"
+          }
+        }
+      },
+      "post": {
+        "description": "Insert or Update an specific candidate, you need to send the id in Body to update, otherwise, create a new candidate",
+        "operationId": "addCandidate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Candidate",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Candidate"
+            }
+          }
+        ],
+        "security": [
+          {
+            "jwt-rsa-custom-authorizer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Candidate"
+            }
+          },
+          "400": {
+            "description": "400 response"
+          },
+          "409": {
+            "description": "409 response"
+          }
+        }
+      },
+      "delete": {
+        "parameters": [],
+        "responses": {}
+      },
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Credentials": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/candidates/profilepic/{id}": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response"
+          }
+        }
+      }
+    },
+    "/candidates/{id}": {
+      "get": {
+        "description": "Used to search a Candidates by ID param",
+        "operationId": "getCandidate",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Candidate"
+            }
+          },
+          "400": {
+            "description": "400 response"
+          },
+          "404": {
+            "description": "404 response"
+          }
+        }
+      }
+    },
+    "/companies": {
+      "get": {
+        "description": "To get all the companies, you need to send the token authentication before",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "security": [
+          {
+            "jwt-rsa-custom-authorizer": []
+          }
+        ],
+        "responses": {}
+      },
+      "post": {
+        "description": "Insert or Update an specific company, you need to send the id in Body to update, otherwise, create a new company",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/companies/{id}": {
+      "get": {
+        "description": "Used to search a company by ID param",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "security": [
+          {
+            "jwt-rsa-custom-authorizer": []
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/users/search?email={email}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    }
+  },
+  "securityDefinitions": {
+    "jwt-rsa-custom-authorizer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "x-amazon-apigateway-authtype": "custom"
+    }
+  },
+  "definitions": {
+    "Candidate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "profile_picture": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone_number": {
+          "type": "string"
+        },
+        "headline": {
+          "type": "string"
+        },
+        "about": {
+          "type": "string"
+        },
+        "current_position": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "industry": {
+          "type": "string"
+        },
+        "github_repository": {
+          "type": "string"
+        },
+        "english_level": {
+          "type": "string"
+        },
+        "remaining_time": {
+          "type": "string"
+        },
+        "education": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "social_media": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "coding_languages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "experience": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tech_skills": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "projects": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "interview": {
+          "$ref": "#/definitions/Candidate_interview"
+        },
+        "website": {
+          "type": "string"
+        }
+      }
+    },
+    "Campaign": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "campaign_name": {
+          "type": "string"
+        },
+        "experience": {
+          "type": "number"
+        },
+        "level": {
+          "type": "number"
+        },
+        "english_level": {
+          "type": "number"
+        },
+        "company": {
+          "$ref": "#/definitions/Campaign_company"
+        },
+        "description": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        }
+      }
+    },
+    "Candidate_interview": {
+      "type": "object",
+      "properties": {
+        "sourcer": {
+          "type": "string"
+        }
+      }
+    },
+    "Campaign_company": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "company_name": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "x-amazon-apigateway-endpoint-configuration": {
+    "disableExecuteApiEndpoint": true
+  }
+}
