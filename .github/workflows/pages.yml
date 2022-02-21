@@ -4,18 +4,22 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'APIs/**.json'
+    # paths:
+    #   - 'APIs/**.json'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Download openapi.json
+        uses: actions/download-artifact@v2
+        with:
+          name: APIs/openapi.json
       - name: Generate Swagger UI
         uses: Legion2/swagger-ui-action@v1
         with:
           output: swagger-ui
-          spec-file: ./APIs/openapi.json
+          spec-file: openapi.json
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
