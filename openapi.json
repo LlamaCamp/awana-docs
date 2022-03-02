@@ -11,7 +11,7 @@
     "https"
   ],
   "paths": {
-    "/campaignsss": {
+    "/campaigns": {
       "get": {
         "operationId": "getCampaigns",
         "produces": [
