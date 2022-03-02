@@ -164,7 +164,7 @@
             "description": "404 response"
           },
           "500": {
-            "description": "500 response"
+            "description": "Server error, please check the logs."
           }
         }
       },
