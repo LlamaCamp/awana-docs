@@ -11,7 +11,7 @@
     "https"
   ],
   "paths": {
-    "/campaignsss": {
+    "/campaigns": {
       "get": {
         "operationId": "getCampaigns",
         "produces": [
@@ -368,94 +368,217 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "Key Identifier for Candidate",
+          "example":"CXoadmaspjiq231208dasd"
         },
         "first_name": {
-          "type": "string"
+          "type": "string",
+          "description": "First Name of the Candidate",
+          "example":"Peter"
         },
         "last_name": {
-          "type": "string"
+          "type": "string",
+          "description": "Last Name of the Candidate",
+          "example":"Smith"
         },
         "profile_picture": {
-          "type": "string"
+          "type": "string",
+          "description": "Profile picture of the candidate",
+          "example":"https://images.hyrellama.com/profiles/{{ Candidate ID }}/profile.jpg"
         },
         "email": {
-          "type": "string"
+          "type": "string",
+          "description": "Candidate Email",
+          "example":"candidate@gmail.com"
         },
         "phone_number": {
-          "type": "string"
+          "type": "string",
+          "description": "Camdidate Telefone Number",
+          "example":"+591 69861xxx" 
         },
         "headline": {
-          "type": "string"
+          "type": "string",
+          "description": "The candidate profile header",
+          "example":"Systems Engineer - Software Developer" 
         },
         "about": {
-          "type": "string"
+          "type": "string",
+          "description": "A brief introduction about the candidate",
+          "example":"I am a software developer, I have almost 3 years of experience. I have knowledge of Java, Python, Javascript, SQL and No SQL, React and Angular. " 
         },
         "current_position": {
-          "type": "string"
+          "type": "string",
+          "description": "Current position of the candidate",
+          "example":"Software Developer Analyst (None if the candidate does not have)"
         },
         "country": {
-          "type": "string"
+          "type": "string",
+          "description": "Candidate's Hometown",
+          "example":"Bolivia"
         },
         "industry": {
-          "type": "string"
+          "type": "string",
+          "description": "Area that dedicates or profiles the candidate",
+          "example":"Banking"
         },
         "github_repository": {
-          "type": "string"
+          "type": "string",
+          "description": "Url of the Candidate GitHub Repository",
+          "example":"https://github.com/Luchin111"
         },
         "english_level": {
-          "type": "string"
+          "type": "string",
+          "description": "English level according to CEFR standard",
+          "example":"C1"
         },
         "remaining_time": {
-          "type": "string"
+          "type": "string",
+          "description": "",
+          "example":""
         },
         "education": {
+          
           "type": "array",
           "items": {
             "type": "string"
+          },
+          "description": "Candidate Education List, specifying all the corresponding information",
+          "example":{
+            "1":{
+              "graduation_date": "2020-01-20",
+              "institution": "Catholic University of .....",
+              "degree":"Systems Engineer",
+              "still_attending": false,
+              "education_level": "Bachelors",
+              "location": "Bolivia",
+              "is_online": false,
+              "start_date": "2014-03-06"
+            }
           }
+          
         },
         "social_media": {
           "type": "array",
           "items": {
             "type": "string"
+          },
+          "description": "Candidate's social networks",
+          "example":{
+            "twitter": "",
+            "facebook": "https://www.facebook.com/profile.php?id=csadasdcxxxxx",
+            "linkedin": "https://www.linkedin.com/in/luis-humberto-medina-medina-617275200/"
           }
         },
         "coding_languages": {
           "type": "array",
           "items": {
             "type": "string"
+          },
+          "description": "Programming languages that the candidate handles",
+          "example":{
+            "1":{
+              "name": "Java",
+              "level": "Proficient"
+            }
+            
           }
         },
-        "experience": {
+        "experiences": {
           "type": "array",
           "items": {
             "type": "string"
+          },
+          "description": "Candidate Work Experiences",
+          "example":{
+            "1":{
+              "end_date": "2020-01-17",
+              "technologies": [
+                {
+                "value": "language:Java",
+                "label": "Java"
+                },
+                {
+                "value": "language:JavaScript",
+                "label": "JavaScript"
+                },
+                {
+                "value": "database:MySQL",
+                "label": "MySQL"
+                },
+                {
+                "value": "database:MongoDB",
+                "label": "MongoDB"
+                },
+                {
+                "value": "technology:Mobile App Development",
+                "label": "Mobile App Development"
+                }
+              ],
+              "employment_type": "Full Time",
+              "company": "AlterBios",
+              "still_attending": false,
+              "location": "Ecuador",
+              "is_online": false,
+              "job_title": "Software Developer",
+              "start_date": "2021-03-01"
+            }
+            
           }
         },
         "tech_skills": {
           "type": "array",
           "items": {
             "type": "string"
+          },
+          "description": "Technology used by the Candidate and the level of expertise",
+          "example":{
+            "1":{
+              "value": "framework:Angular",
+              "level": "Beginner",
+              "label": "Angular"
+            }
+            
           }
         },
         "notes": {
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "Not used"
         },
         "projects": {
           "type": "array",
           "items": {
             "type": "string"
+          },
+          "description": "Projects carried out by the Candidate",
+          "example":{
+            "1":{
+              "still_working": "",
+              "end_date": "2021-10-12",
+              "technologies": [
+                {
+                "value": "framework:React",
+                "label": "React"
+                }
+              ],
+              "project_description": "This is the front-end of the 7 Bottles problem. \nThe back-end was uploaded as lambda function in aws and this project consumes the service.\nThe back-end project solves using a genetic algorithm the next problem: you have 21 bottles of wine, 7 full, 7 half full and 7 empty. You have to distribute to 3 people and everyone must have the same amount of wine. ",
+              "project_url": "https://github.com/stevengf14/7-bottles-react",
+              "project_name": "7-bottles-react",
+              "start_date": "2021-10-07"
+            }
+            
           }
         },
         "interview": {
           "$ref": "#/definitions/Candidate_interview"
         },
         "website": {
-          "type": "string"
+          "type": "string",
+          "description": "Candidate's website (if any)",
+          "example":"www.luismedina.io"
         }
       }
     },
