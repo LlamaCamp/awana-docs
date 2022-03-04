@@ -552,13 +552,33 @@
           "type": "array",
           "items": {
             "type": "string"
+          },
+          "description": "Projects carried out by the Candidate",
+          "example":{
+            "1":{
+              "still_working": "",
+              "end_date": "2021-10-12",
+              "technologies": [
+                {
+                "value": "framework:React",
+                "label": "React"
+                }
+              ],
+              "project_description": "This is the front-end of the 7 Bottles problem. \nThe back-end was uploaded as lambda function in aws and this project consumes the service.\nThe back-end project solves using a genetic algorithm the next problem: you have 21 bottles of wine, 7 full, 7 half full and 7 empty. You have to distribute to 3 people and everyone must have the same amount of wine. ",
+              "project_url": "https://github.com/stevengf14/7-bottles-react",
+              "project_name": "7-bottles-react",
+              "start_date": "2021-10-07"
+            }
+            
           }
         },
         "interview": {
           "$ref": "#/definitions/Candidate_interview"
         },
         "website": {
-          "type": "string"
+          "type": "string",
+          "description": "Candidate's website (if any)",
+          "example":"www.luismedina.io"
         }
       }
     },
