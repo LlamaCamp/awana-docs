@@ -586,19 +586,30 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "Campaing Database id",
+          "example":"casoashODslaoAS213128hdbk..."
         },
         "campaign_name": {
-          "type": "string"
+          "type": "string",
+          "description": "Name of the campaign to be created ",
+          "example":"Frontend Developer Required"
         },
         "experience": {
-          "type": "number"
+          "type": "number",
+          "description": "The experience required for the positions or position required for the campaign ",
+          "example":"1 to 4"
+          
         },
         "level": {
-          "type": "number"
+          "type": "number",
+          "description": "The level of expertise required for the job positions or position ",
+          "example":"Proficient"
         },
         "english_level": {
-          "type": "number"
+          "type": "number",
+          "description": "Level of English required",
+          "example":"Proficient"
         },
         "company": {
           "$ref": "#/definitions/Campaign_company"
@@ -617,7 +628,9 @@
         "sourcer": {
           "type": "string"
         }
-      }
+      },
+      "description": "All information about the interview with the candidate to verify their level of expertise",
+      
     },
     "Campaign_company": {
       "type": "object",
@@ -628,7 +641,9 @@
         "company_name": {
           "type": "string"
         }
-      }
+      },
+      "description": "The company's information to identify it",
+      "example":"ID= asdljskadnaslkd Company_Name=Awana"
     }
   },
   "x-amazon-apigateway-endpoint-configuration": {
